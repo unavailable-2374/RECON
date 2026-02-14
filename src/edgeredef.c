@@ -77,6 +77,7 @@ int main (int argc, char *argv[]) {
   }
 
   log_file = fopen("tmp2/log", "w");
+  if (!log_file) { printf("Can not open tmp2/log for writing.  Exiting\n"); exit(1); }
   setvbuf(log_file, NULL, _IOLBF, 0);  /* line-buffered */
 
   while (fgets(line, 15, ele_no)) {

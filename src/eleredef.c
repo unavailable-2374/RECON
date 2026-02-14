@@ -141,10 +141,15 @@ int main (int argc, char *argv[]) {
   new_stat = fopen("tmp2/redef_stat", "r");
 
   new_msps = fopen("summary/new_msps", "a");
+  if (!new_msps) { printf("Can not open summary/new_msps for writing.  Exiting\n"); exit(1); }
   unproc = fopen("summary/unproc", "a");
+  if (!unproc) { printf("Can not open summary/unproc for writing.  Exiting\n"); exit(1); }
   combo = fopen("summary/combo", "a");
+  if (!combo) { printf("Can not open summary/combo for writing.  Exiting\n"); exit(1); }
   obs = fopen("summary/obsolete", "a");
+  if (!obs) { printf("Can not open summary/obsolete for writing.  Exiting\n"); exit(1); }
   log_file = fopen("tmp2/log", "a");
+  if (!log_file) { printf("Can not open tmp2/log for writing.  Exiting\n"); exit(1); }
   setvbuf(log_file, NULL, _IOLBF, 0);  /* line-buffered, auto-flush on \n */
   setvbuf(new_msps, NULL, _IOFBF, 65536);
   setvbuf(combo, NULL, _IOFBF, 65536);
@@ -2190,6 +2195,10 @@ int find_prim(IMG_NODE_t *nd, float cutoff, long end1, long end2, long efl1, lon
     if ( (1.0*al1/efl1 > cutoff || 1.0*al2/efl2 > cutoff) && (efl1-al1 < 30 || efl2-al2 < 30) ) {
       sum = 1;
       mark = 1;
+      if ((al1+al2) == 0) {
+        printf("eleredef warning: divide by zero averted in find_prim -- setting al1 to 1.\n");
+        al1 = 1;
+      }
       score = score*2/(al1+al2);
       if (score > *sc) {
 	*sc = score;
