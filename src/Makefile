@@ -50,8 +50,8 @@ COMPRESS = gzip               # GNU compression (better, smaller)
 ## should not need to modify below this line
 #######
 SHELL  = /bin/sh
-LIBS   = -lsquid -lm
-#LIBS = -ldbmalloc -lsquid -lm 
+LIBS   =
+#LIBS = -ldbmalloc -lsquid -lm
 
 READMES = README 
 #INSTALL COPYING DEMO GNULICENSE FILES
@@ -111,13 +111,13 @@ test:
 	(cd Testsuite; testsuite.sh)
 
 lint:
-	lint -h -I$(SQUIDDIR) $(RFLAGS) $(MAIN) $(SRC) $(SQUIDDIR)/llib-lsquid.ln /usr/lib/lint/llib-lm.ln
+	lint -h $(RFLAGS) $(MAIN) $(SRC)
 
 .c.o:
-	$(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<		
+	$(CC) $(CFLAGS) $(MDEFS) -c $<
 
 .m.o:
-	$(CC) $(CFLAGS) $(MDEFS) -I$(SQUIDDIR) -c $<
+	$(CC) $(CFLAGS) $(MDEFS) -c $<
 
 
 
