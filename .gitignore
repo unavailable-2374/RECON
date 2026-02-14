@@ -1,0 +1,36 @@
+# Compiled binaries
+bin/imagespread
+bin/eledef
+bin/eleredef
+bin/edgeredef
+bin/famdef
+src/imagespread
+src/eledef
+src/eleredef
+src/edgeredef
+src/famdef
+*.o
+
+# Demo output (generated at runtime)
+Demos/output/images/
+Demos/output/ele_def_res/
+Demos/output/ele_redef_res/
+Demos/output/edge_redef_res/
+Demos/output/summary/
+Demos/output/tmp
+Demos/output/tmp2
+Demos/baseline/
+
+# Editor / system files
+*~
+*.swp
+*.swo
+core
+TAGS
+*.Addrs
+*.Counts
+*.pixie
+Makefile.bak
+
+# Claude Code project files
+CLAUDE.md
