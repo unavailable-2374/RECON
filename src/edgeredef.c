@@ -457,7 +457,7 @@ void edge_repair(ELE_INFO_t *ele_info) {
       if (!hanger) {
 	fprintf(log_file, "ele %d can not be repaired.\n", ele_info->index);
       } else if (hanger->to_edge->type == 'S') {
-	hanger->to_edge->type == 'P';
+	hanger->to_edge->type = 'P';
 	ele_write_out(ele_info, 2);
       }
     }
